@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Gray-Scott model</title>
+    <link rel="icon" type="image/x-icon" href="Content/Logos/Logo_website.png">
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+    <style>
+      /* Navbar container */
+      .navbar {
+        overflow: hidden;
+        background-color: #333;
+        font-family: Arial;
+      }
+
+      /* Links inside the navbar */
+      .navbar a {
+        float: left;
+        font-size: 16px;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+
+      /* The dropdown container */
+      .dropdown {
+        float: left;
+        overflow: hidden;
+      }
+
+      /* Dropdown button */
+      .dropdown .dropbtn {
+        font-size: 16px;
+        border: none;
+        outline: none;
+        color: white;
+        padding: 14px 16px;
+        background-color: inherit;
+        font-family: inherit; /* Important for vertical align on mobile phones */
+        margin: 0; /* Important for vertical align on mobile phones */
+      }
+
+      /* Add a red background color to navbar links on hover */
+      .navbar a:hover, .dropdown:hover .dropbtn {
+        background-color: rgb(216, 2, 2);
+      }
+
+      /* Dropdown content (hidden by default) */
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+      }
+
+      /* Links inside the dropdown */
+      .dropdown-content a {
+        float: none;
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+      }
+
+      /* Add a grey background color to dropdown links on hover */
+      .dropdown-content a:hover {
+        background-color: #ddd;
+      }
+
+      /* Show the dropdown menu on hover */
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+
+      #canvasDiv {
+        text-align: center;
+        display: grid;
+        grid-template-columns: 20vw 76vw;
+        gap: 10px;
+        margin-top: 20px;
+      }
+
+      input[type="range"] {
+        -webkit-appearance: none;
+        appearance: none;
+        background: transparent;
+        cursor: pointer;
+        width: 100%;
+      }
+
+      /* Removes default focus */
+      input[type="range"]:focus {
+        outline: none;
+      }
+
+      /******** Chrome, Safari, Opera and Edge Chromium styles ********/
+      /* slider track */
+      input[type="range"]::-webkit-slider-runnable-track {
+        background-color: #add8e6;
+        border-radius: 0.5rem;
+        height: 1rem;
+      }
+
+      /* slider thumb */
+      input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none; /* Override default look */
+        appearance: none;
+        margin-top: -4px; /* Centers thumb on the track */
+        background-color: #808080;
+        border-radius: 0.2rem;
+        height: 1.5rem;
+        width: 0.5rem;
+      }
+
+      input[type="range"]:focus::-webkit-slider-thumb {
+        outline: 3px solid #808080;
+        outline-offset: 0.125rem;
+      }
+
+      #sliderDiv {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        width: 100%;
+        margin: auto;
+      }
+
+      .sliderRow {
+        display: grid;
+        grid-template-columns: 1fr 10fr 1fr;
+        text-align: left;
+        gap: 10px;
+        margin-left: 10px;
+      }
+
+      #myCanvas {
+        width: 100%;
+        height: 96vh;
+        border: 2px black solid;
+        background-color: white;
+      }
+
+      #resetButton {
+        width: 30%;
+        height: 30px;
+        border: 0;
+        border-radius: 4%;
+        background-color: rgb(4, 170, 109);
+        color: white;
+      }
+
+      #resetButton:hover {
+        background-color: rgba(4, 170, 109, 0.699);
+      }
+
+      input {
+        width: 100%;
+      }
+
+      #guidingText {
+        text-align: center;
+        margin: 0 auto;
+        padding: 20px 20px;
+        width: 80vw;
+        background-color: rgb(226, 255, 225);
+        border-radius: 10px;
+      }
+
+
+      body {
+        margin: 0;
+      }
+
+      h1 {
+        text-align: center;
+        font-family: sans-serif;
+        font-size: 250%;
+        font-weight: lighter;
+        color: black;
+      }
+
+      p {
+        text-align: center;
+        font-family: sans-serif;
+        font-size: 100%;
+        font-weight: lighter;
+        color: black;
+      }
+
+      span {
+        font-family: sans-serif;
+      }
+
+      button {
+        font-family: sans-serif;
+      }
+
+      ul {
+        font-family: sans-serif;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="navbar">
+      <a href="Homepage.html">Home</a>
+      <div class="dropdown">
+        <button class="dropbtn">Projects
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <a href="Gray_Scott.html">Gray-Scott model</a>
+          <a href="2D_diff.html">2D diffusion</a>
+          <a href="Reactor_model.html">Interactive reactor model</a>
+          <a href="Reactor_model_2D.html">2D interactive reactor model</a>
+        </div>
+      </div>
+      <a href="About.html">About</a>
+      <a href="Contact.html">Contact</a>
+    </div>
+
+    <div id="guidingText">
+      <h1>The Gray-Scott model of a reaction-diffusion system</h1>
+
+      <p>
+        Complex dynamics can occur through relatively simple rules, <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">Conway's Game of Life</a> is a great example of this. 
+        On this page the Gray-Scott model is investigated, here the following chemical reactions are modeled:
+      </p>
+
+      <p>
+        \[
+        U + 2V \rightarrow 3V
+        \]
+        \[
+        V \rightarrow P
+        \]
+      </p>
+
+      <p>
+        The concentrations of species U and V are followed and visualized. To do this a 2D grid is created where 
+        every point on the grid has a concentration of U and of V. The species then spread throughout the grid 
+        by diffusion. The diffusivity of U is usually twice the diffusivity of V. Reaction only occurs between 
+        species on the same grid point. The partial differential equations shown below are used to describe the
+        concentrations of U and V over time. 
+      </p>
+
+      <p>
+        \[
+        \frac{\partial U}{\partial t} = D_u \nabla^2 U - UV^2 + F(1-U)
+        \]
+        \[
+        \frac{\partial V}{\partial t} = D_v \nabla^2 V - UV^2 - (F+k)V
+        \]
+      </p>
+
+      <p>
+        In the equations \(D_u\) and \(D_v\) are the diffusivity of <i>U</i> and <i>V</i> respectively. The concentrations
+        of the species are indicated by <i>U</i> and <i>V</i> itself. And finally <i>F</i> and <i>k</i> are the feed rate and
+        kill rate respectively. The feed rate <i>F</i> determines how quickly <i>U</i> gets replenished and how quickly <i>V</i>
+        gets depleted. While the kill rate <i>k</i> determines the speed at which <i>V</i> reacts away to form <i>P</i>.
+      </p>
+
+      <p>
+        The equations of the Gray-Scott model shown above are solved using the explicit Euler method. In the canvas below 
+        you can interact with the Gray-Scott model. On the left you can change the feed rate <i>F</i> and the kill rate 
+        <i>k</i>. The resulting concentrations of <i>U</i> are shown in blue and the resulting concentrations of 
+        <i>V</i> are shown in red on the canvas. You can inject species <i>V</i> by clicking on the canvas with the mouse. 
+        Several interesting combinations of 
+        <i>F</i> and <i>k</i> are:
+        <ul>
+          <li>Spots and loops: <i>F</i> = 0.018,  <i>k</i> = 0.051</li>
+          <li>Moving spots: <i>F</i> = 0.014,  <i>k</i> = 0.054</li>
+          <li>Chaos and holes: <i>F</i> = 0.034,  <i>k</i> = 0.056</li>
+          <li>Mazes: <i>F</i> = 0.029,  <i>k</i> = 0.057</li>
+          <li>Mitosis: <i>F</i> = 0.036,  <i>k</i> = 0.060</li>
+        </ul>
+      </p>
+
+    </div>
+
+    
+    <div id="canvasDiv">
+      <div id="sliderDiv">
+        <div class="sliderRow">
+          <span>F:</span>
+          <input type="range" min="0" max="100" value="37" id="FInput">
+          <span id="FVal">0.037</span>
+        </div>
+
+        <div class="sliderRow">
+          <span>k:</span>
+          <input type="range" min="0" max="100" value="60" id="kInput">
+          <span id="kVal">0.060</span>
+        </div>
+        <div>
+          <button id="resetButton" onclick="resize()">Reset</button>
+        </div>
+      </div>
+      <canvas id="myCanvas"></canvas>
+    </div>
+
+    <script src="Javascript/GrayScott.js"></script>
+  </body>
+</html>

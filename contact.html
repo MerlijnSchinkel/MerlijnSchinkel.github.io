@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Homepage</title>
+    <title>Contact</title>
     <link rel="icon" type="image/x-icon" href="Content/Logos/Logo_website.png">
     
     <style>
@@ -75,11 +75,17 @@
         display: block;
       }
 
+      .social-media-icons img {
+        height: 40px;
+        margin-right: 14px;
+        cursor: pointer;
+      }
+
 
       h1 {
         text-align: center;
         font-family: sans-serif;
-        font-size: 300%;
+        font-size: 250%;
         font-weight: lighter;
         color: black;
       }
@@ -88,32 +94,13 @@
         text-align: center;
         font-family: sans-serif;
         font-size: 100%;
+        font-weight: lighter;
+        color: black;
       }
 
       body {
         overflow: hidden;
         margin: 0;
-      }
-
-      #myCanvas {
-        position: absolute;
-        z-index: -1;
-        left: 0vw;
-        top: 0vh;
-        width: 100%;
-        height: 100%;
-        border: 2px black solid;
-        align-items: center;
-        background-color: white;
-      }
-
-      #titleDiv {
-        display: inline-block;
-        background-color: rgba(116, 170, 85, 0.7);
-        width: 50vw;
-        height: 100vh;
-        position: absolute;
-        left: 25vw;
       }
     </style>
   </head>
@@ -136,18 +123,16 @@
       <a href="contact.html">Contact</a>
     </div>
 
-    <div id="titleDiv">
-      <h1>Welcome to my website</h1>
-
-      <p>Here I will share my interactive modelling projects.</p>
-    </div>
+    <h1>Contact</h1>
 
     <div style="text-align: center;">
-      <canvas id="myCanvas"></canvas>
+      <div class="social-media-icons">
+        <a href="https://www.youtube.com/@ReactingFlows" target="_blank"><img src="Content/Logos/Youtube_logo.png"></a>
+        <a href="https://www.instagram.com/reactingflows" target="_blank"><img src="Content/Logos/Instagram_logo.png"></a>
+        <a href="https://www.linkedin.com/in/merlijn-schinkel-3ab99b12b" target="_blank"><img src="Content/Logos/LinkedIn_logo.png"></a>
+        <a href="mailto:reactingflows@outlook.com"><img src="Content/Logos/email.png"></a>
+      </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/mathjs@11.11.0/lib/browser/math.js"></script>
-    <script src="Javascript/functions.js"></script>
-    <script src="Javascript/script.js"></script>
   </body>
 </html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Homepage</title>
+    <title>About me</title>
     <link rel="icon" type="image/x-icon" href="Content/Logos/Logo_website.png">
     
     <style>
@@ -79,7 +79,7 @@
       h1 {
         text-align: center;
         font-family: sans-serif;
-        font-size: 300%;
+        font-size: 250%;
         font-weight: lighter;
         color: black;
       }
@@ -88,6 +88,8 @@
         text-align: center;
         font-family: sans-serif;
         font-size: 100%;
+        font-weight: lighter;
+        color: black;
       }
 
       body {
@@ -95,25 +97,17 @@
         margin: 0;
       }
 
-      #myCanvas {
+      #textDiv {
         position: absolute;
-        z-index: -1;
-        left: 0vw;
-        top: 0vh;
-        width: 100%;
-        height: 100%;
-        border: 2px black solid;
-        align-items: center;
-        background-color: white;
-      }
-
-      #titleDiv {
-        display: inline-block;
-        background-color: rgba(116, 170, 85, 0.7);
-        width: 50vw;
+        padding: 0 20px;
+        left: 10vw;
+        width: 80vw;
         height: 100vh;
-        position: absolute;
-        left: 25vw;
+        background-color: rgba(150, 255, 140, 0.425);
+        text-align: center;
+        display: grid;
+        grid-template-columns: 4fr 2fr;
+        column-gap: 50px;
       }
     </style>
   </head>
@@ -136,18 +130,17 @@
       <a href="contact.html">Contact</a>
     </div>
 
-    <div id="titleDiv">
-      <h1>Welcome to my website</h1>
-
-      <p>Here I will share my interactive modelling projects.</p>
+    <div id="textDiv"> 
+      <h1>About me</h1>
+      <p></p>
+      <p>
+        I studied Chemical Engineering in Eindhoven, here I developed a real passion for simulating systems. These
+        systems can be related to any field. This website is meant to share this passion with you through the interactive
+        projects available on this website.
+      </p>
+      <img src="Content/Me.jpeg" width="400"></img>
     </div>
+    
 
-    <div style="text-align: center;">
-      <canvas id="myCanvas"></canvas>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/mathjs@11.11.0/lib/browser/math.js"></script>
-    <script src="Javascript/functions.js"></script>
-    <script src="Javascript/script.js"></script>
   </body>
 </html>

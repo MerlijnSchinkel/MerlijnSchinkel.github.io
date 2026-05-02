@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>2D diffusion</title>
+    <title>Interactive reactor model 2D</title>
     <link rel="icon" type="image/x-icon" href="../Content/Logos/Logo_website.png">
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
@@ -11,7 +11,7 @@
       .navbar {
         overflow: hidden;
         background-color: #333;
-        font-family: sans-serif;
+        font-family: Arial;
       }
 
       /* Links inside the navbar */
@@ -80,13 +80,92 @@
 
       #canvasDiv {
         text-align: center;
+        display: grid;
+        grid-template-columns: 20vw 76vw;
+        gap: 10px;
+        margin-top: 20px;
+      }
+
+      input[type="range"] {
+        -webkit-appearance: none;
+        appearance: none;
+        background: transparent;
+        cursor: pointer;
+        width: 100%;
+      }
+
+      /* Removes default focus */
+      input[type="range"]:focus {
+        outline: none;
+      }
+
+      /******** Chrome, Safari, Opera and Edge Chromium styles ********/
+      /* slider track */
+      input[type="range"]::-webkit-slider-runnable-track {
+        background-color: #add8e6;
+        border-radius: 0.5rem;
+        height: 1rem;
+      }
+
+      /* slider thumb */
+      input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none; /* Override default look */
+        appearance: none;
+        margin-top: -4px; /* Centers thumb on the track */
+        background-color: #808080;
+        border-radius: 0.2rem;
+        height: 1.5rem;
+        width: 0.5rem;
+      }
+
+      input[type="range"]:focus::-webkit-slider-thumb {
+        outline: 3px solid #808080;
+        outline-offset: 0.125rem;
       }
 
       #myCanvas {
-        width: 80vw;
-        height: 80vh;
+        position: absolute;
+        top: 10vh;
+        left: 5vw;
+        width: 90vw;
+        height: 40vh;
         border: 2px black solid;
         background-color: white;
+      }
+
+      body {
+        margin: 0;
+      }
+
+      h1 {
+        text-align: center;
+        font-family: sans-serif;
+        font-size: 250%;
+        font-weight: lighter;
+        color: black;
+      }
+
+      p {
+        text-align: center;
+        font-family: sans-serif;
+        font-size: 100%;
+        font-weight: lighter;
+        color: black;
+      }
+
+      span {
+        font-family: sans-serif;
+      }
+
+      #sliderGrid {
+        display: grid;
+        grid-template-columns: 26% 1fr 10%;
+        gap: 10px;
+        column-gap: 10px;
+        width: 40vw;
+        position: absolute;
+        left: 10vw;
+        top: 70vh;
       }
     </style>
   </head>
@@ -109,10 +188,22 @@
       <a href="../Contact.html">Contact</a>
     </div>
 
-    <div id="canvasDiv">
-      <canvas id="myCanvas"></canvas>
-    </div>
+    <canvas id="myCanvas"></canvas>
 
-    <script src="../Javascript/2D_diff.js"></script>
+    <div id="sliderGrid">
+        <span>Flow velocity [m/s]:</span>
+        <input id="velInput" type="range" min="1" max="120" value="50">
+        <span id="velVal">0.5</span>
+
+        <span>Diffusivity [m2/s]:</span>
+        <input id="diffInput" type="range" min="0" max="6" value="3">
+        <span id="diffVal">1e-6</span>
+
+        <span>Reaction rate:</span>
+        <input id="krInput" type="range" min="0" max="200" value="50">
+        <span id="krVal">0.5</span>
+    </div>
+    
+    <script src="../Javascript/Reactor_model_2D.js"></script>
   </body>
 </html>

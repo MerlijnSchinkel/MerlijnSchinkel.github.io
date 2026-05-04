@@ -103,12 +103,33 @@
         left: 10vw;
         width: 80vw;
         height: 100vh;
-        background-color: rgba(150, 255, 140, 0.425);
+        background-color: rgba(150, 255, 140, 0.3);
         text-align: center;
         display: grid;
         grid-template-columns: 4fr 2fr;
         column-gap: 50px;
       }
+
+      #backgrDiv {
+        display: inline-block;
+        background-color: rgba(116, 170, 85, 0.3);
+        width: 82vw;
+        height: 100vh;
+        position: absolute;
+        left: 9vw;
+        padding: 0 20px;
+      }
+
+      #backgrDiv2 {
+        display: inline-block;
+        background-color: rgba(116, 170, 85, 0.1);
+        width: 84vw;
+        height: 100vh;
+        position: absolute;
+        left: 8vw;
+        padding: 0 20px;
+      }
+
     </style>
   </head>
 
@@ -121,7 +142,7 @@
         </button>
         <div class="dropdown-content">
           <a href="Projects/Gray_Scott.html">Gray-Scott model</a>
-          <a href="Projects/2D_diff.html">2D diffusion</a>
+          <a href="Projects/Heat_equation.html">Heat equation</a>
           <a href="Projects/Reactor_model.html">Interactive reactor model</a>
           <a href="Projects/Reactor_model_2D.html">2D interactive reactor model</a>
         </div>
@@ -130,13 +151,15 @@
       <a href="contact.html">Contact</a>
     </div>
 
+    <div id="backgrDiv"></div>
+    <div id="backgrDiv2"></div>
     <div id="textDiv"> 
       <h1>About me</h1>
       <p></p>
       <p>
-        I studied Chemical Engineering in Eindhoven, here I developed a real passion for simulating systems. These
-        systems can be related to any field. This website is meant to share this passion with you through the interactive
-        projects available on this website.
+        I graduated in Chemical Engineering in Eindhoven, with the focus on chemical process technology. 
+        During my studies I developed a real passion for modelling systems. These systems can be related 
+        to any field. This website is meant to share this passion with you through some interactive projects.
       </p>
       <img src="Content/Me.jpeg" width="400"></img>
     </div>
